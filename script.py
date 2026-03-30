@@ -3,7 +3,7 @@ Convert email files (.eml) to a single PDF document.
 
 Installation:
     Add this alias to your ~/.zshrc or ~/.bashrc:
-    alias email-to-pdf="source ~/git/email_to_pdf/venv/bin/activate && email-to-pdf"
+    alias email-to-pdf="source ~/git/eml2pdf/venv/bin/activate && email-to-pdf"
 
 Usage:
     email-to-pdf [input_directory]
