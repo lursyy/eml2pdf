@@ -15,39 +15,12 @@ from email.utils import parsedate_to_datetime, parseaddr, getaddresses
 from pathlib import Path
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageTemplate, Frame, PageBreak
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
 from reportlab.lib.units import inch
-from reportlab.pdfgen import canvas
 
 
 def process_emails(input_dir=".", output_file="combined.pdf"):
     """Convert all .eml files in input_dir to a single PDF."""
-    
-    class PageNumberCanvas(canvas.Canvas):
-        def __init__(self, *args, **kwargs):
-            canvas.Canvas.__init__(self, *args, **kwargs)
-            self._page_count = 0
-        
-        def showPage(self):
-            self._page_count += 1
-            canvas.Canvas.showPage(self)
-        
-        def save(self):
-            total_pages = self._page_count
-            self.set_current_page_number(1)
-            for page_num in range(1, self._page_count + 1):
-                self.draw_page_decorations(page_num, total_pages)
-            canvas.Canvas.save(self)
-        
-        def draw_page_decorations(self, page_num, total_pages):
-            pass
-    
-    def footer_func(canvas, doc, total_pages):
-        canvas.saveState()
-        canvas.setFont("Helvetica", 8)
-        canvas.drawString(inch, 0.5*inch, f"Seite {doc.page} von {total_pages}")
-        canvas.restoreState()
-    
     emails = []
 
     for path in Path(input_dir).glob("*.eml"):
@@ -79,11 +52,10 @@ def process_emails(input_dir=".", output_file="combined.pdf"):
 
     emails.sort(key=lambda x: x[0])
 
-    # Create PDF with custom page template for page numbers
+    # Create PDF
     doc = SimpleDocTemplate(output_file, pagesize=A4, bottomMargin=0.75*inch)
     story = []
     styles = getSampleStyleSheet()
-    total_pages = len(emails)
 
     for date, msg, body in emails:
         # Add metadata
