@@ -1,0 +1,2 @@
+[console_scripts]
+email-to-pdf = script:process_emails

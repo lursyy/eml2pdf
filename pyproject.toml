@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "email-to-pdf"
+version = "0.1.0"
+description = "Convert email files (.eml) to a single PDF"
+requires-python = ">=3.8"
+dependencies = [
+    "reportlab>=4.0.0",
+]
+
+[project.scripts]
+email-to-pdf = "script:process_emails"

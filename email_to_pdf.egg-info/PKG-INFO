@@ -1,0 +1,6 @@
+Metadata-Version: 2.4
+Name: email-to-pdf
+Version: 0.1.0
+Summary: Convert email files (.eml) to a single PDF
+Requires-Python: >=3.8
+Requires-Dist: reportlab>=4.0.0

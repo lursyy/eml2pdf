@@ -1,0 +1,8 @@
+pyproject.toml
+script.py
+email_to_pdf.egg-info/PKG-INFO
+email_to_pdf.egg-info/SOURCES.txt
+email_to_pdf.egg-info/dependency_links.txt
+email_to_pdf.egg-info/entry_points.txt
+email_to_pdf.egg-info/requires.txt
+email_to_pdf.egg-info/top_level.txt
