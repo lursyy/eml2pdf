@@ -1,12 +1,16 @@
 """
 Convert email files (.eml) to a single PDF document.
 
+Installation:
+    Add this alias to your ~/.zshrc or ~/.bashrc:
+    alias email-to-pdf="source ~/git/email_to_pdf/venv/bin/activate && email-to-pdf"
+
 Usage:
-    python script.py [input_directory]
+    email-to-pdf [input_directory]
 
 Examples:
-    python script.py                    # Process .eml files in current directory
-    python script.py /path/to/emails    # Process .eml files in specified directory
+    email-to-pdf              # Process .eml files in current directory
+    email-to-pdf /path/to/emails    # Process .eml files in specified directory
 """
 
 from email import policy
